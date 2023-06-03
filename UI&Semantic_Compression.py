@@ -51,6 +51,7 @@ if input_dictionary["Choice"] == "Choice 1":
     api_token = "" #API Key
 
     prompt = input_dictionary["Email Text"] + pre_prompt
+    title_prompt = input_dictionary["Email Text"] + title_pre_prompt
 
     response = requests.post(
         url,
@@ -65,8 +66,24 @@ if input_dictionary["Choice"] == "Choice 1":
         }
     )
 
-    data = response.json()
-    print(data["choices"][0]["message"]["content"])
+    dict_data = response.json()
+    print(dict_data["choices"][0]["message"]["content"])
+
+    response = requests.post(
+        url,
+        headers={
+            "Authorization": f"Bearer {api_token}",
+            "Content-Type": "application/json",
+        },
+        json={
+            "model": "gpt-3.5-turbo",
+            "messages": [{"role": "user", "content": title_prompt}],
+            "temperature": 0.7
+        }
+    )
+
+    title_data = response.json()
+    print(title_data["choices"][0]["message"]["content"])
 
 
 elif input_dictionary["Choice"] == "Choice 2":
@@ -139,5 +156,3 @@ elif input_dictionary["Choice"] == "Choice 2":
     
     print(summary)
     """
-
-
