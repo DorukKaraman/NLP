@@ -48,7 +48,7 @@ if input_dictionary["Choice"] == "Choice 1":
     pre_prompt = "\n\nCompress this email into a table."
 
     url = "https://api.openai.com/v1/chat/completions"
-    api_token = "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"
+    api_token = "" #API Key
 
     prompt = input_dictionary["Email Text"] + pre_prompt
 
