@@ -45,10 +45,11 @@ input_dictionary = mail[0]
 pre_prompt = ""
 
 if input_dictionary["Choice"] == "Choice 1":
-    pre_prompt = "\n\nCompress this email into a python dictionary. Make sure that the dictionary only has str to str mapping and the keys are in a human readable form. Write only the dictionary in the output."
+    pre_prompt = "\n\nCompress this email into one python dictionary. Make sure that the dictionary only has str to str mapping and the keys are in a human readable form. Write only the dictionary in the output."
+    title_pre_prompt = "\n\nFind a title for this email. Write only the title in the output."
 
     url = "https://api.openai.com/v1/chat/completions"
-    api_token = "" #API Key
+    api_token = "" # Enter your API token here
 
     prompt = input_dictionary["Email Text"] + pre_prompt
     title_prompt = input_dictionary["Email Text"] + title_pre_prompt
